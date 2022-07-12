@@ -1,0 +1,93 @@
+1                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2
+0
+ 16.53.01 JOB05545 ---- WEDNESDAY, 10 FEB 2021 ----
+ 16.53.01 JOB05545  IRR010I  USERID KC03D4D  IS ASSIGNED TO THIS JOB.
+ 16.53.01 JOB05545  ICH70001I KC03D4D  LAST ACCESS AT 16:52:00 ON WEDNESDAY, FEBRUARY 10, 2021
+ 16.53.01 JOB05545  $HASP373 KC03D4DA STARTED - INIT 3    - CLASS A        - SYS 2964
+ 16.53.01 JOB05545  $HASP395 KC03D4DA ENDED - RC=0000
+0------ JES2 JOB STATISTICS ------
+-  10 FEB 2021 JOB EXECUTION DATE
+-           41 CARDS READ
+-           97 SYSOUT PRINT RECORDS
+-            0 SYSOUT PUNCH RECORDS
+-           10 SYSOUT SPOOL KBYTES
+-         0.00 MINUTES EXECUTION TIME
+         1 //KC03D4DA JOB ,'L. JAOS',MSGCLASS=H                                    JOB05545
+         2 //JSTEP01  EXEC PGM=ASSIST
+         3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR
+         4 //SYSPRINT DD SYSOUT=*
+         5 //SYSIN    DD *
+         6 //
+ ICH70001I KC03D4D  LAST ACCESS AT 16:52:00 ON WEDNESDAY, FEBRUARY 10, 2021
+ IEFA111I KC03D4DA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+          SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+ IEF236I ALLOC. FOR KC03D4DA JSTEP01
+ IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+ IEF237I JES2 ALLOCATED TO SYSPRINT
+ IEF237I JES2 ALLOCATED TO SYSIN
+ IEF142I KC03D4DA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+ IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB
+ IEF285I   KC03D4D.KC03D4DA.JOB05545.D0000102.?         SYSOUT
+ IEF285I   KC03D4D.KC03D4DA.JOB05545.D0000101.?         SYSIN
+ IEF373I STEP/JSTEP01 /START 2021041.1653
+ IEF032I STEP/JSTEP01 /STOP  2021041.1653
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC
+         VIRT:   584K  SYS:   244K  EXT:        0K  SYS:    11216K
+         ATB- REAL:                  1056K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF375I  JOB/KC03D4DA/START 2021041.1653
+ IEF033I  JOB/KC03D4DA/STOP  2021041.1653
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC
+1*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT
+0
+0                                                                                                               PAGE    1
+0  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+                                       1 *****************************************************************
+                                       2 *                                                               *
+                                       3 *  CSCI 360-1/PE1           ASSIGNMENT 3           SPRING 2021  *
+                                       4 *                                                               *
+                                       5 *  DEVELOPER NAME: LEONART JAOS                                 *
+                                       6 *  DATE DUE:  02/10/2021                                        *
+                                       7 *                                                               *
+                                       8 *  IN THIS FIRST PART OF ASSIGNMENT 03, WE ARE INITIALIZING VAL *
+                                       9 *  UES, LOADING VALUES INTO REGISTERS, AND PERFORMING SIMPLE    *
+                                      10 *  ADD AND SUBTRACT OPERATIONS WITH THE REGISTERS. XDUMP IS USED*
+                                      11 *  TO DISPLAY THE FINAL VALUES IN THE REGISTERS AND CLEAR THEM. *
+                                      12 *                                                               *
+                                      13 *****************************************************************
+                                      14 *        COL. 10
+                                      15 *        |     COL. 16
+                                      16 *        |     |
+                                      17 *        v     v
+ 000000                               18 ASSIGN3A     CSECT
+ 000000                               19          USING ASSIGN3A,15     ESTABLISH ADDRESSABILITY ON REG 15
+ 000000 E160 0000 0000 00000          20          XDUMP ,           DUMP CONTENTS OF ALL 16 REGS
+ 000006 5810 F028            00028    21          L     1,NUM1      LOAD VAL IN NUM1 TO REG 1
+ 00000A 5820 F02C            0002C    22          L     2,NUM2      LOAD VAL IN NUM2 TO REG 2
+ 00000E 1B12                          23          SR    1,2         VAL IN REG1 = VAL REG1 - VAL REG2
+ 000010 5830 F028            00028    24          L     3,NUM1      LOAD VAL IN NUM1 TO REG 3
+ 000014 5840 F02C            0002C    25          L     4,NUM2      LOAD VAL IN NUM2 TO REG 4
+ 000018 1A43                          26          AR    4,3         VAL IN REG4 = VAL REG4 + VAL REG3
+ 00001A E160 0000 0000 00000          27          XDUMP ,           DUMP CONTENTS OF ALL 16 REGS
+ 000020 07FE                          28          BCR   B'1111',14  UNCONDITIONAL RETURN TO CALLER (OS)
+                                      29 *
+                                      30          LTORG             LITERAL ORGANIZATION
+ 000028 000000AD                      31 NUM1     DC     F'173'     FULLWORD VAR FOR NUM1
+ 00002C 0000005D                      32 NUM2     DC     F'93'      FULLWORD VAR FOR NUM2
+                                      33 *
+                                      34          END   ASSIGN3A
+0***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS
+0*** DYNAMIC CORE AREA USED:  LOW:    1044 HIGH:     380 LEAVING:  492144 FREE BYTES. AVERAGE:       40 BYTES/STMT ***
+0*** ASSEMBLY TIME =    0.000 SECS,    35000 STATEMENTS/SEC ***
+0*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***
+0BEGIN XSNAP - CALL     1 AT C0000006 USER REGISTERS
+0 REGS 0-7      F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4
+  REGS 8-15     F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    00000030    FFFE7960    00000000
+0
+0BEGIN XSNAP - CALL     2 AT E0000020 USER REGISTERS
+0 REGS 0-7      F4F4F4F4    00000050    0000005D    000000AD    0000010A    F4F4F4F4    F4F4F4F4    F4F4F4F4
+  REGS 8-15     F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    00000030    FFFE7960    00000000
+0
+1*** EXECUTION TIME =    0.000 SECS.         9 INSTRUCTIONS EXECUTED -     9000 INSTRUCTIONS/SEC ***
+0*** FIRST CARD NOT READ: NO CARDS READ:FILE UNOPENED
+0*** AM004 - NORMAL USER TERMINATION BY RETURN ***
